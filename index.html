@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>神リリック (Kami-Lyric)</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for Strect Culture / HipHop Feel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Permanent+Marker&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- TOP SCREEN -->
+        <div id="screen-top" class="screen active">
+            <header class="app-header">
+                <h1 class="logo">神リリック</h1>
+                <p class="subtitle">画面を長押し、運命（リリック）をかませ！</p>
+            </header>
+            
+            <div class="main-content">
+                <div class="action-zone">
+                    <button id="btn-kamase" class="kamase-trigger">かませ！！</button>
+                    <p class="instruction">ボタンを長押ししてパワーを溜めろ！</p>
+                </div>
+            </div>
+            
+            <!-- Longpress overlay for build-up animation -->
+            <div id="buildup-overlay" class="hidden">
+                <div class="energy-bar-container">
+                    <div id="energy-bar" class="energy-bar"></div>
+                </div>
+                <div class="buildup-text">BUILDING UP...</div>
+            </div>
+        </div>
+
+        <!-- RESULT SCREEN -->
+        <div id="screen-result" class="screen">
+            <header class="result-header">
+                <div class="result-badge">本日の神リリック</div>
+            </header>
+            
+            <div class="result-content">
+                <!-- Visual equalizer effect -->
+                <div class="equalizer">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                
+                <div class="lyric-card">
+                    <p id="result-lyric" class="lyric-text">ここにバチバチの韻が<br>ドロップされるぜ！</p>
+                </div>
+                
+                <div class="audio-player">
+                    <div class="beat-info">🎵 BACK TRACK PLAYING...</div>
+                </div>
+            </div>
+            
+            <div class="action-group">
+                <button id="btn-save" class="btn btn-secondary">コレクションに保存</button>
+                <button id="btn-share" class="btn btn-primary">SNSにシェア</button>
+                <button id="btn-retry" class="btn btn-text">もう一度かます</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
