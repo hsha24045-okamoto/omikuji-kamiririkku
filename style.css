@@ -35,7 +35,6 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    /* 【超重要】同じフォルダ内の画像「image_ea6be1.png」を直接読み込みます */
     background-image: url('./image_ea6be1.png');
     background-size: cover;
     background-position: center;
@@ -49,19 +48,18 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    /* 「無敵状態」の文字と顔が綺麗に見えるよう、青紫のグラデーションを薄く重ねる */
     background: linear-gradient(180deg, rgba(11, 12, 16, 0.35) 0%, rgba(20, 24, 46, 0.65) 100%);
     z-index: -1;
 }
 
-/* アプリコンテナ（スマホ風の表示枠） */
+/* アプリコンテナ */
 .app-container {
     width: 100%;
     max-width: 420px;
     height: 100vh;
     max-height: 850px;
     background: rgba(11, 12, 16, 0.2); 
-    backdrop-filter: blur(4px); /* 背後の「無敵状態」が程よく透けるボカシ */
+    backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     position: relative;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
@@ -70,7 +68,7 @@ body {
     border-radius: 12px;
 }
 
-/* 画面切り替えのベース設定 */
+/* 画面切り替え設定 */
 .screen {
     position: absolute;
     top: 0;
@@ -82,7 +80,7 @@ body {
     padding: 30px 20px;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.3s ease;
     z-index: 1;
 }
 
@@ -163,7 +161,30 @@ body {
     text-shadow: 0 2px 8px rgba(0,0,0,1);
 }
 
-/* 長押し時のビルドアップ演出用 */
+.top-footer {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.btn-nav {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--primary-color);
+    border: 1px solid rgba(0, 242, 254, 0.4);
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+    backdrop-filter: blur(5px);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.btn-nav:hover {
+    background: rgba(0, 242, 254, 0.2);
+}
+
+/* 長押し時のビルドアップ */
 #buildup-overlay {
     position: absolute;
     top: 0;
@@ -176,7 +197,6 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 10;
-    transition: opacity 0.2s ease;
 }
 
 #buildup-overlay.hidden {
@@ -191,14 +211,12 @@ body {
     border-radius: 6px;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
 }
 
 .energy-bar {
     width: 0%;
     height: 100%;
     background: linear-gradient(to right, var(--primary-color), var(--accent-color));
-    box-shadow: 0 0 10px var(--primary-color);
 }
 
 .buildup-text {
@@ -210,156 +228,84 @@ body {
     animation: blink 0.5s infinite alternate;
 }
 
-@keyframes blink {
-    from { opacity: 0.4; }
-    to { opacity: 1; }
-}
+@keyframes blink { from { opacity: 0.4; } to { opacity: 1; } }
 
 /* --- RESULT SCREEN --- */
-.result-header {
-    text-align: center;
-    margin-top: 15px;
-}
-
-.result-badge {
-    display: inline-block;
-    padding: 6px 16px;
-    background: var(--accent-color);
-    color: #fff;
-    font-weight: 700;
-    font-size: 0.8rem;
-    border-radius: 20px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.result-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px 0;
-}
-
-.lyric-card {
-    width: 100%;
-    background: var(--card-bg);
-    border-left: 4px solid var(--primary-color);
-    border-radius: 8px;
-    padding: 35px 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.7);
-    backdrop-filter: blur(5px);
-    margin: 20px 0;
-    transform: rotate(1deg);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.lyric-text {
-    font-size: 1.5rem;
-    font-weight: 900;
-    line-height: 1.6;
-    text-align: center;
-    color: #fff;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.9);
-}
-
-/* イコライザーアニメーション */
-.equalizer {
-    display: flex;
-    align-items: flex-end;
-    height: 40px;
-    gap: 4px;
-    margin-bottom: 10px;
-}
-
-.equalizer .bar {
-    width: 6px;
-    height: 10px;
-    background-color: var(--primary-color);
-    animation: bounce 0.6s infinite ease-in-out alternate;
-}
+.result-header { text-align: center; margin-top: 15px; }
+.result-badge { display: inline-block; padding: 6px 16px; background: var(--accent-color); color: #fff; font-weight: 700; font-size: 0.8rem; border-radius: 20px; }
+.result-content { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px 0; }
+.lyric-card { width: 100%; background: var(--card-bg); border-left: 4px solid var(--primary-color); border-radius: 8px; padding: 35px 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.7); margin: 20px 0; transform: rotate(1deg); border: 1px solid rgba(255, 255, 255, 0.1); }
+.lyric-text { font-size: 1.5rem; font-weight: 900; line-height: 1.6; text-align: center; color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.9); }
+.equalizer { display: flex; align-items: flex-end; height: 40px; gap: 4px; margin-bottom: 10px; }
+.equalizer .bar { width: 6px; height: 10px; background-color: var(--primary-color); animation: bounce 0.6s infinite ease-in-out alternate; }
 .equalizer .bar:nth-child(2) { background-color: var(--secondary-color); animation-delay: 0.15s; }
 .equalizer .bar:nth-child(3) { background-color: var(--accent-color); animation-delay: 0.3s; }
 .equalizer .bar:nth-child(4) { background-color: var(--secondary-color); animation-delay: 0.45s; }
 .equalizer .bar:nth-child(5) { background-color: var(--primary-color); animation-delay: 0.6s; }
+@keyframes bounce { 0% { height: 5px; } 100% { height: 40px; } }
+.audio-player { width: 100%; text-align: center; }
+.beat-info { font-size: 0.75rem; color: var(--primary-color); font-weight: 700; animation: pulse 1.5s infinite; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+@keyframes pulse { 0% { opacity: 0.6; } 50% { opacity: 1; } 100% { opacity: 0.6; } }
 
-@keyframes bounce {
-    0% { height: 5px; }
-    100% { height: 40px; }
-}
-
-.audio-player {
-    width: 100%;
+/* --- 【新規追加】COLLECTION SCREEN STYLE --- */
+.collection-header {
     text-align: center;
+    margin-top: 20px;
+    margin-bottom: 15px;
 }
-
-.beat-info {
-    font-size: 0.75rem;
+.collection-title {
+    font-family: 'Permanent Marker', sans-serif;
+    font-size: 2.2rem;
     color: var(--primary-color);
-    font-weight: 700;
     letter-spacing: 2px;
-    animation: pulse 1.5s infinite;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
-
-@keyframes pulse {
-    0% { opacity: 0.6; }
-    50% { opacity: 1; }
-    100% { opacity: 0.6; }
+.collection-subtitle {
+    font-size: 0.8rem;
+    color: var(--text-muted);
 }
+.collection-content {
+    flex: 1;
+    overflow-y: auto; /* 溢れた場合にスクロール可能に */
+    padding-right: 5px;
+    margin-bottom: 15px;
+}
+/* カスタムスクロールバー(シアンカラー) */
+.collection-content::-webkit-scrollbar { width: 4px; }
+.collection-content::-webkit-scrollbar-thumb { background: var(--primary-color); border-radius: 2px; }
 
-/* ボタン群 */
-.action-group {
+.collection-list {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    width: 100%;
-    margin-bottom: 20px;
 }
-
-.btn {
-    width: 100%;
+.empty-message {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-top: 40px;
+    line-height: 1.6;
+}
+.saved-lyric-item {
+    background: rgba(0, 0, 0, 0.6);
+    border-left: 3px solid var(--accent-color);
     padding: 15px;
-    border-radius: 8px;
+    border-radius: 6px;
+    color: #fff;
     font-size: 1rem;
     font-weight: 700;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.2s, filter 0.2s;
+    line-height: 1.4;
+    animation: fadeIn 0.3s ease;
+}
+@keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+.collection-footer {
+    margin-bottom: 10px;
 }
 
-.btn:active {
-    transform: scale(0.98);
-}
-
-.btn-primary {
-    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-    color: #0b0c10;
-}
-
-.btn-secondary {
-    background: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(2px);
-}
-
-.btn-secondary:hover {
-    border-color: var(--primary-color);
-}
-
-.btn-text {
-    background: transparent;
-    color: #fff;
-    font-size: 0.9rem;
-    text-decoration: underline;
-    border: none;
-    padding: 5px;
-    cursor: pointer;
-    text-shadow: 0 2px 6px rgba(0,0,0,1);
-}
-
-.btn-text:hover {
-    color: var(--primary-color);
-}
+/* ボタン基本スタイル */
+.action-group { display: flex; flex-direction: column; gap: 12px; width: 100%; margin-bottom: 20px; }
+.btn { width: 100%; padding: 15px; border-radius: 8px; font-size: 1rem; font-weight: 700; border: none; cursor: pointer; transition: transform 0.2s; }
+.btn:active { transform: scale(0.98); }
+.btn-primary { background: linear-gradient(to right, var(--primary-color), var(--secondary-color)); color: #0b0c10; }
+.btn-secondary { background: rgba(0, 0, 0, 0.4); color: #fff; border: 2px solid rgba(255, 255, 255, 0.3); backdrop-filter: blur(2px); }
+.btn-text { background: transparent; color: #fff; font-size: 0.9rem; text-decoration: underline; border: none; cursor: pointer; text-shadow: 0 2px 6px rgba(0,0,0,1); text-align: center; }
